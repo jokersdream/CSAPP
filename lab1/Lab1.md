@@ -315,6 +315,24 @@ A'-->D[无穷大]-->G[4.return f]
 A'-->E[NaN]-->G
 ```
 
+```c
+unsigned float_twice(unsigned uf) {
+  unsigned f = ~(uf|0x807fffff);   //exp全1，则f=0
+  if (f) {
+    unsigned a = uf&0x7f800000;    //exp全0，则false
+    if (a) {
+      unsigned u = uf+0x800000;
+      if (~(u|0x807fffff)) {  //exp为1111 1111，则false
+        return u;
+      }
+      return u&0xff800000;
+    }
+    return (uf&0x80000000)|(uf<<1);
+  }
+  return uf;
+}
+```
+
 ## 1.12 float_i2f
 
 ```c
