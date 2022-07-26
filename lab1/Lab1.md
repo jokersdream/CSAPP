@@ -298,7 +298,7 @@ int howManyBits(int x) {
 
 单精度浮点数：
 
-![image-float_point](.\assets\float_point.png)
+![image-float_point](./assets/float_point.png)
 
 $f*2$在bit-level乘2，只用将f的阶码E加1，也即exp部分+1，即可实现。
 
